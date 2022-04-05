@@ -1,6 +1,7 @@
 package com.api.student.controllers;
 
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.api.student.dto.CourseDTO;
 import com.api.student.dto.StudentDTO;
 import com.api.student.services.StudentService;
 
@@ -24,7 +26,7 @@ public class StudentController {
 	public List<StudentDTO> findAll() {
 		return service.findAll();
 	}
-	
+		
 	@GetMapping(value = "/{id}")
 	public StudentDTO findById(@PathVariable Long id) {
 		return service.findById(id);
@@ -33,5 +35,15 @@ public class StudentController {
 	@PostMapping
 	public StudentDTO create(@RequestBody StudentDTO student) {
 		return service.create(student);
+	}
+	
+	@GetMapping(value = "{id}/courses")
+	public Set<CourseDTO> findCoursesAll(@PathVariable Long id) {
+		return service.findCoursesAll(id);
+	}
+	
+	@PostMapping(value = "{idStudent}/courses/{idCourse}")
+	public StudentDTO insertCourse(@PathVariable Long idStudent, @PathVariable Long idCourse) {
+		return service.insertCourse(idStudent, idCourse);
 	}
 }
