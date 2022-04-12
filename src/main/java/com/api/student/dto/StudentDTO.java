@@ -38,15 +38,19 @@ public class StudentDTO {
 		courses.add(course);
 	}
 	
-	public void removeCourse(CourseDTO course) {
-		courses.remove(course);
+	public void removeCourse(Long idCourse) {
+		for(CourseDTO course : courses) {
+			
+			if(course.getId() == idCourse) {
+				courses.remove(course);
+			}
+		}
 	}
 	
 	public boolean containsCourseById(Long idCourse) {
-
-		for(CourseDTO j : courses) {
+		for(CourseDTO course : courses) {
 			
-			if(idCourse == j.getId()) {
+			if(idCourse == course.getId()) {
 				return true;
 			}
 		}

@@ -69,7 +69,6 @@ public class StudentService {
 		CourseDTO courseDTO = new CourseDTO(findCourse);
 		studentDTO.insertCourse(courseDTO);
 		
-		// Update student
 		Student student = new Student(studentDTO);
 		Student saved = repository.save(student);
 		return new StudentDTO(saved);
@@ -77,15 +76,10 @@ public class StudentService {
 	
 	@Transactional()
 	public StudentDTO removeCourse(Long idStudent, Long idCourse) {
-		
 		Student findStudent = repository.findById(idStudent).get();
-		Course findCourse = courseRepository.findById(idCourse).get();
-		
 		StudentDTO studentDTO = new StudentDTO(findStudent);
-		CourseDTO courseDTO = new CourseDTO(findCourse);
-		studentDTO.removeCourse(courseDTO);
+		studentDTO.removeCourse(idCourse);
 		
-		// Update student
 		Student student = new Student(studentDTO);
 		repository.save(student);
 		return studentDTO;

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -50,5 +51,10 @@ public class StudentController {
 	@PostMapping(value = "{idStudent}/courses/{idCourse}")
 	public StudentDTO insertCourse(@PathVariable Long idStudent, @PathVariable Long idCourse) {
 		return service.insertCourse(idStudent, idCourse);
+	}
+	
+	@DeleteMapping(value = "{idStudent}/courses/{idCourse}")
+	public StudentDTO removeCourse(@PathVariable Long idStudent, @PathVariable Long idCourse) {
+		return service.removeCourse(idStudent, idCourse);
 	}
 }
