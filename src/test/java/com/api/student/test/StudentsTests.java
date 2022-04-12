@@ -85,7 +85,7 @@ public class StudentsTests {
 		StudentDTO studentGenerated = service.create(student);
 		StudentDTO studentUpdated = service.insertCourse(studentGenerated.getId(), courseId);
 		studentUpdated = service.removeCourse(studentUpdated.getId(), courseId);
-		boolean containsCourseInStudent = studentGenerated.containsCourseById(courseId);
+		boolean containsCourseInStudent = studentUpdated.containsCourseById(courseId);
 		boolean result = !containsCourseInStudent && studentGenerated.getId() == studentUpdated.getId();
 		assertThat(result).isTrue();
 	}
