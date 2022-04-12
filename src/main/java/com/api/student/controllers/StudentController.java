@@ -42,6 +42,11 @@ public class StudentController {
 		return service.findCoursesAll(id);
 	}
 	
+	@GetMapping(value = "{idStudent}/courses/{idCourse}")
+	public CourseDTO findCourseById(@PathVariable Long idStudent, @PathVariable Long idCourse) {
+		return service.findCourseById(idStudent, idCourse);
+	}
+	
 	@PostMapping(value = "{idStudent}/courses/{idCourse}")
 	public StudentDTO insertCourse(@PathVariable Long idStudent, @PathVariable Long idCourse) {
 		return service.insertCourse(idStudent, idCourse);

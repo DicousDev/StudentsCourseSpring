@@ -7,6 +7,10 @@ public class CourseDTO {
 	private Long id;
 	private String name;
 	
+	public CourseDTO() {
+		
+	}
+	
 	public CourseDTO(Long id, String name) {
 		setId(id);
 		setName(name);

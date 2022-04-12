@@ -41,6 +41,13 @@ public class StudentService {
 		return student.getCourses();
 	}
 	
+	@Transactional(readOnly = true)
+	public CourseDTO findCourseById(Long idStudent, Long idCourse) {
+		StudentDTO student = findById(idStudent);
+		CourseDTO course = student.getCourseById(idCourse);
+		return course;
+	}
+	
 	@Transactional()
 	public StudentDTO create(StudentDTO dto) {
 		Boolean existsEmail = repository.existsByEmail(dto.getEmail());

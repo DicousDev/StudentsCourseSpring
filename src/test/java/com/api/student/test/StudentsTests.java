@@ -8,7 +8,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.api.student.dto.CourseDTO;
 import com.api.student.dto.StudentDTO;
-import com.api.student.services.CourseService;
 import com.api.student.services.StudentService;
 
 @SpringBootTest
@@ -89,5 +88,19 @@ public class StudentsTests {
 		boolean containsCourseInStudent = studentGenerated.containsCourseById(courseId);
 		boolean result = !containsCourseInStudent && studentGenerated.getId() == studentUpdated.getId();
 		assertThat(result).isTrue();
+	}
+	
+	@Test
+	public void findCourseById() {
+		Long idCourseTarget = 2L;
+		CourseDTO course = service.findCourseById(1L, idCourseTarget);
+		assertThat(course.getId()).isNotNull();
+	}
+	
+	@Test
+	public void findCourseByIdInvalid() {
+		Long idCourseTarget = 5L;
+		CourseDTO course = service.findCourseById(1L, idCourseTarget);
+		assertThat(course.getId()).isNull();
 	}
 }

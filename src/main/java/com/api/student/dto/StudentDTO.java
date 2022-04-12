@@ -74,6 +74,18 @@ public class StudentDTO {
 	public String getEmail() {
 		return email;
 	}
+	
+	public CourseDTO getCourseById(Long idCourse) {
+		
+		for(CourseDTO course : courses) {
+			
+			if(course.getId() == idCourse) {
+				return course;
+			}
+		}
+		
+		return new CourseDTO();
+	}
 
 	public Set<CourseDTO> getCourses() {
 		return courses;
